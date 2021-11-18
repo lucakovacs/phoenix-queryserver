@@ -224,7 +224,8 @@
                                 <goal>analyze-only</goal>
                             </goals>
                             <configuration>
-                                <failOnWarning>true</failOnWarning>
+                                <!-- For better build stability as HBase changes are auto-synced -->
+                                <failOnWarning>false</failOnWarning>
                             </configuration>
                         </execution>
                     </executions>
