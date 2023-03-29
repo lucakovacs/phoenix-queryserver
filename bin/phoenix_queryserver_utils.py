@@ -88,6 +88,8 @@ def setPath():
     LOGGING_JAR_PATTERN = "log4j-core*.jar"
     LOGGING_JAR_PATTERN2 = "log4j-api*.jar"
     LOGGING_JAR_PATTERN3 = "log4j-1.2-api*.jar"
+    # downstream only dependency, see: CDPD-47004
+    LOGREDACTOR_JAR_PATTERN = "logredactor-*.jar"
 
     OVERRIDE_SLF4J_BACKEND = "PHOENIX_THIN_OVERRIDE_SLF4J_BACKEND"
     OVERRIDE_LOGGING = "OVERRIDE_LOGGING_JAR_LOCATION"
@@ -166,6 +168,9 @@ def setPath():
 
     global sqlline_with_deps_jar
     sqlline_with_deps_jar = findFileInPathWithoutRecursion(SQLLINE_WITH_DEPS_PATTERN, os.path.join(current_dir, "..","lib"))
+
+    global logredactor_jar
+    logredactor_jar = findFileInPathWithoutRecursion(LOGREDACTOR_JAR_PATTERN, os.path.join(current_dir, "..","lib"))
 
     global slf4j_backend_jar
     slf4j_backend_jar = os.environ.get(OVERRIDE_SLF4J_BACKEND)
@@ -294,4 +299,5 @@ if __name__ == "__main__":
     print("java:", java)
     print("jvm_module_flags:", jvm_module_flags)
     print("hbase_env:", hbase_env)
+    print("logredactor_jar", logredactor_jar)
 
