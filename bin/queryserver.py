@@ -101,6 +101,10 @@ java_cmd = '%(java)s %(jvm_module_flags)s -cp ' +\
     phoenix_queryserver_utils.slf4j_backend_jar + os.pathsep + \
     phoenix_queryserver_utils.logging_jar + os.pathsep + \
     phoenix_queryserver_utils.phoenix_client_jar + os.pathsep + \
+    phoenix_queryserver_utils.logredactor_jar + os.pathsep + \
+    phoenix_queryserver_utils.jackson_core_jar + os.pathsep + \
+    phoenix_queryserver_utils.jackson_databind_jar + os.pathsep + \
+    phoenix_queryserver_utils.jackson_annotations_jar + os.pathsep + \
     phoenix_queryserver_utils.phoenix_queryserver_jar + \
     " -Dproc_phoenixserver" + \
     ('' if '-Dlog4j2.configurationFile' in opts else ' -Dlog4j2.configurationFile=file:'

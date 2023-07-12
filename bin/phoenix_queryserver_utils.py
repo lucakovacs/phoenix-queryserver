@@ -172,6 +172,15 @@ def setPath():
     global logredactor_jar
     logredactor_jar = findFileInPathWithoutRecursion(LOGREDACTOR_JAR_PATTERN, os.path.join(current_dir, "..","lib"))
 
+    global jackson_core_jar
+    jackson_core_jar = findFileInPathWithoutRecursion("jackson-core*.jar", os.path.join(current_dir, "..","lib"))
+
+    global jackson_databind_jar
+    jackson_databind_jar = findFileInPathWithoutRecursion("jackson-databind*.jar", os.path.join(current_dir, "..","lib"))
+
+    global jackson_annotations_jar
+    jackson_annotations_jar = findFileInPathWithoutRecursion("jackson-annotations*.jar", os.path.join(current_dir, "..","lib"))
+
     global slf4j_backend_jar
     slf4j_backend_jar = os.environ.get(OVERRIDE_SLF4J_BACKEND)
     if slf4j_backend_jar is None or slf4j_backend_jar == "":
