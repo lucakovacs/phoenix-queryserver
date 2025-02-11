@@ -39,11 +39,11 @@ execute() {
     THREADS=1
   fi
 
-  mvn -B -e -f "$MAIN_POM" clean verify -Pcodecoverage -fn -Dmaven.javadoc.skip=true -DskipShade -T "$THREADS"
+  mvn -B -e -f "$MAIN_POM" clean verify -Pcodecoverage -fn -Dphoenix.client.artifactid=phoenix-client-embedded-hbase-2.4 -Dmaven.javadoc.skip=true -DskipShade -T "$THREADS"
 
   # If the required parameters are given, the code coverage results are uploaded to the SonarQube Server
   if [ -n "$SONAR_LOGIN" ] && [ -n "$SONAR_PROJECT_KEY" ] && [ -n "$SONAR_URL" ]; then
-    mvn -B -e -Pcodecoverage -f "$MAIN_POM" sonar:sonar -Dsonar.projectName="$SONAR_PROJECT_NAME" \
+    mvn -B -e -Pcodecoverage -f "$MAIN_POM" sonar:sonar -Dphoenix.client.artifactid=phoenix-client-embedded-hbase-2.4 -Dsonar.projectName="$SONAR_PROJECT_NAME" \
       -Dsonar.host.url="$SONAR_URL" -Dsonar.login="$SONAR_LOGIN" -Dsonar.projectKey="$SONAR_PROJECT_KEY" -T "$THREADS"
   fi
 }
